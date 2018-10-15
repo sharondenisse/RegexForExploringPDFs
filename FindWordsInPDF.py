@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
 
-
-import PyPDF2, os, re, sys, io
+import PyPDF2, os, re, sys, io, shutil
 from io import StringIO
 
 
@@ -12,14 +10,11 @@ from io import StringIO
 # Ideally, it is the location where this notebook is also sitting.  The work directory
 # is the location where the text files where be created.
 
-# In[3]:
 
 
 get_ipython().run_line_magic('cd', 'C:\\Users\\Skenny02\\Desktop\\MapsForMatt')
 workDir = (r'C:\Users\Skenny02\Desktop')
 
-
-# In[4]:
 
 
 pdfFiles_SDK = []
@@ -30,8 +25,6 @@ directorySDK = [r'C:\Users\Skenny02\Desktop\MapsForMatt']
 # This is only permissible if there is a small amount of pdfs in each directory
 # CAUTION: THE CODE BELOW IS RECURSIVE
 
-
-# In[8]:
 
 
 i = 0
@@ -44,61 +37,27 @@ while i < ry:
     i = i + 1
 
 
-# In[12]:
-
-
 for files in pdfName_SDK:
     print(files)
 
-
-# In[13]:
-
-
 print(len(pdfFiles_SDK))
 #print(len(pdfName_SDK))
-
-
-# In[24]:
 
 
 tex = []
 encrypted = []
 textsOneP = []
 
-
-# In[25]:
-
-
-import shutil
-
-
-# In[26]:
-
-
 get_ipython().run_line_magic('pwd', '')
-
-
-# In[27]:
-
 
 # Create a directory where to place the encrpyted files
 get_ipython().system('mkdir C:\\Users\\Skenny02\\Desktop\\xxxpdfs')
 
 
-# In[28]:
-
-
 # Confirm that the folder was created
 get_ipython().system('dir C:\\Users\\Skenny02\\Desktop\\xxxpdfs')
 
-
-# In[29]:
-
-
 xxxpdfs = r'C:\Users\Skenny02\Desktop\xxxpdfs'
-
-
-# In[30]:
 
 
 i = 0
@@ -131,16 +90,8 @@ while i < len(pdfFiles_SDK):
         textsOneP.append(cc)
     i = i + 1
 
-
-# In[31]:
-
-
 print(len(pdfFiles_SDK), len(textsOneP))
 textsOneP
-
-
-# In[37]:
-
 
 # Searching for string "Map xxxx", where x are numbers from 0 to 9
 z = 0
@@ -173,21 +124,11 @@ while z < (len(pdfFiles_SDK)):
 #line = re.findall('[A-Za-z]{3}[\d]{4}', openFile)
 
 
-# In[38]:
-
-
 mapsLocation
 
-
-# In[ ]:
-
-
-
-
-
+#
+#
 # Below, we will create an Excel sheet names "For_SDK" in the desktop. It will have only one sheet, named "pdfFileName"
-
-# In[39]:
 
 
 from openpyxl import Workbook
@@ -205,15 +146,9 @@ print(filepath)
 
 # Below we are creating the titles for the first and second column, which will be placed in the first row.
 
-# In[40]:
-
 
 wSheet['A1']= "regFile"
 wSheet['B1']= "DocPhrase"
-
-
-# In[41]:
-
 
 i = 0
 rr = 2
@@ -227,10 +162,6 @@ while i < len(mapsLocation):
     i = i+1
     rr = rr + 1
 
-
-# In[42]:
-
-
 i = 0
 rr = 2
 
@@ -243,29 +174,9 @@ while i < len(mapsLocation):
     i = i+1
     rr = rr + 1
 
-
-# In[43]:
-
-
 wBook.save(filepath)
 
 
 # Below is a list of all the variables we used in this code
 
-# In[44]:
-
-
 get_ipython().run_line_magic('whos', '')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
